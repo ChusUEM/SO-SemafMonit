@@ -1,4 +1,5 @@
-#include <stdbool.h>
+#ifndef CINE_H
+#define CINE_H
 
 #define FILAS 10
 #define COLUMNAS 15
@@ -11,3 +12,5 @@ typedef struct
 } Asiento;
 
 Asiento **crearCine();
+
+#endif
