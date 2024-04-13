@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "*.php": "php",
+        "*.html": "php",
+        "unistd.h": "c",
+        "stdbool.h": "c",
+        "dispatch.h": "c",
+        "semaphore.h": "c"
+    }
+}

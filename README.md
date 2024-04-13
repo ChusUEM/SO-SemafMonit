@@ -11,5 +11,10 @@ Temática: semáforos y monitores
     ## Descripción
     El proyecto consiste en la implementación de un sistema de semáforos y monitores en lenguaje C para la “Implementación de un Sistema de Reserva de Entradas de Cine”, con el objetivo poner en práctica los conceptos de entornos multitarea, capacidad para sincronizar el acceso a recursos compartidos...simulando un escenario real donde múltiples clientes intentan reservar entradas para una película simultáneamente.
 
-
+## Compilación y ejecución
+Para compilar el proyecto, se debe ejecutar el siguiente comando:
+```bash
+    gcc cine.c main.c cliente.c -o programa
+    ./programa -o cine 
+```
 
