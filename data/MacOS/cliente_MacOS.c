@@ -5,9 +5,7 @@
 #include <unistd.h>
 
 int idGlobal = 0;
-sem_t semaforo;
 
-// Creamos un cliente con un asiento reservado
 Cliente crearCliente(int numReservas, bool patronAsientos, sem_t *semaforo, Asiento **cine)
 {
     Cliente nuevoCliente;
