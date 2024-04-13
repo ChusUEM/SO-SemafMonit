@@ -2,6 +2,7 @@
 #define CLIENTE_H
 #include <stdbool.h>
 #include <semaphore.h>
+#include "cine.h"
 
 typedef struct
 {

@@ -15,4 +15,5 @@ typedef struct
 Asiento **crearCine();
 void pintarCine(Asiento **cine);
 
+
 #endif

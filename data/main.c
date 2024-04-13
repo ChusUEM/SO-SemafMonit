@@ -16,7 +16,7 @@ int main()
     int numClientes = 10;
     bool patronAsientos;
     sem_t semaforo;
-    sem_init(semaforo, 0, 1); // Inicializar el semáforo
+    sem_init(&semaforo, 0, 1); // Inicializar el semáforo
 
     // Crea un numero aleatorio de clientes con crearCliente(), que tengan random el patronAsientos y un numero de numReservas entre 1 y 4
     Cliente clientes[numClientes];
@@ -27,7 +27,7 @@ int main()
         int aleatorio = rand() % 2;
         patronAsientos = aleatorio == 0 ? false : true;
         int numReservas = rand() % 4 + 1;
-        clientes[i] = crearCliente(numReservas, patronAsientos, semaforo, cine);
+        clientes[i] = crearCliente(numReservas, patronAsientos, &semaforo, cine);
         pthread_create(&hilos[i], NULL, reservarAsiento, &clientes[i]);
     }
 
@@ -36,7 +36,7 @@ int main()
         pthread_join(hilos[i], NULL);
     }
 
-    sem_destroy(semaforo); // Destruir el semáforo
+    sem_destroy(&semaforo); // Destruir el semáforo
 
     pintarCine(cine);
     return 0;

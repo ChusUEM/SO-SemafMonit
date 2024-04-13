@@ -3,6 +3,8 @@
 #include <pthread.h>
 #include <semaphore.h>
 #include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int idGlobal = 0;
 sem_t semaforo;
@@ -37,7 +39,7 @@ void *reservarAsiento(void *arg)
             if (!cine[fila][columna].estaReservada && reservasRealizadas < cliente->numReservas)
             {
                 cine[fila][columna].estaReservada = true;
-                sleep(10); // Mantener el asiento reservado durante 10 segundos
+                sleep(1); // Mantener el asiento reservado durante 10 segundos
                 printf("El cliente %d ha reservado el asiento %d-%d\n", cliente->id, fila, columna);
                 reservasRealizadas++;
             }
@@ -54,7 +56,7 @@ void *reservarAsiento(void *arg)
                 if (!cine[i][j].estaReservada)
                 {
                     cine[i][j].estaReservada = true;
-                    sleep(10);                   // Mantener el asiento reservado durante 10 segundos
+                    sleep(1);                   // Mantener el asiento reservado durante 10 segundos
                     sem_post(cliente->semaforo); // Desbloquear el semáforo
                     reservasRealizadas++;
                     return NULL;

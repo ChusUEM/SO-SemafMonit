@@ -21,3 +21,13 @@ Asiento **crearCine()
 
     return cine;
 }
+
+void pintarCine(Asiento **cine) {
+    printf("Estado del cine:\n");
+    for (int i = 0; i < FILAS; i++) {
+        for (int j = 0; j < COLUMNAS; j++) {
+            printf("%d ", cine[i][j].estaReservada ? 1 : 0);
+        }
+        printf("\n");
+    }
+}
