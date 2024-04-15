@@ -1,5 +1,5 @@
-#ifndef CINE_H
-#define CINE_H
+#ifndef CINE_MacOS_H
+#define CINE_MacOS_H
 #include <stdbool.h>
 
 #define FILAS 10
@@ -14,6 +14,5 @@ typedef struct
 
 Asiento **crearCine();
 void pintarCine(Asiento **cine);
-
 
 #endif

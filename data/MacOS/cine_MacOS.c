@@ -1,4 +1,4 @@
-#include "cine.h"
+#include "cine_MacOS.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,10 +22,13 @@ Asiento **crearCine()
     return cine;
 }
 
-void pintarCine(Asiento **cine) {
+void pintarCine(Asiento **cine)
+{
     printf("Estado del cine:\n");
-    for (int i = 0; i < FILAS; i++) {
-        for (int j = 0; j < COLUMNAS; j++) {
+    for (int i = 0; i < FILAS; i++)
+    {
+        for (int j = 0; j < COLUMNAS; j++)
+        {
             printf("%d ", cine[i][j].estaReservada ? 1 : 0);
         }
         printf("\n");
