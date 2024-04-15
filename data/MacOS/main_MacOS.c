@@ -6,10 +6,12 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <dispatch/dispatch.h>
+#include <time.h>
 
 int main()
 {
     Asiento **cine = crearCine();
+    clock_t inicio = clock(); // Inicializar el reloj
     pintarCine(cine);
     int numClientes = 30;
     bool patronAsientos;
@@ -34,5 +36,10 @@ int main()
     dispatch_semaphore_signal(semaforo); // Incrementar el semáforo
 
     pintarCine(cine);
+    clock_t fin = clock(); // Finalizar el reloj
+    // Calcular el tiempo total que tardó la sección de código
+    double tiempo_total = ((double)(fin - inicio)) / CLOCKS_PER_SEC;
+    // Imprimir el tiempo total
+    printf("Tiempo total: %f segundos\n", tiempo_total);
     return 0;
 }
