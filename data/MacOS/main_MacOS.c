@@ -2,9 +2,10 @@
 #include "cliente.h"
 #include <stdio.h>
 #include <pthread.h>
-#include <dispatch/dispatch.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <dispatch/dispatch.h>
 
 int main()
 {
@@ -13,7 +14,6 @@ int main()
     int numClientes = 10;
     bool patronAsientos;
     dispatch_semaphore_t semaforo = dispatch_semaphore_create(1); // Inicializar el semáforo
-
     Cliente clientes[numClientes];
     pthread_t hilos[numClientes];
 
@@ -31,7 +31,7 @@ int main()
         pthread_join(hilos[i], NULL);
     }
 
-    dispatch_semaphore_signal(semaforo); // Destruir el semáforo
+    dispatch_semaphore_signal(semaforo); // Incrementar el semáforo
 
     pintarCine(cine);
     return 0;
