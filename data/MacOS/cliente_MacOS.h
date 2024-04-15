@@ -1,8 +1,8 @@
-#ifndef CLIENTE_H
-#define CLIENTE_H
+#ifndef CLIENTE_MacOS_H
+#define CLIENTE_MacOS_H
 #include <stdbool.h>
 #include <semaphore.h>
-#include "cine.h"
+#include "cine_MacOS.h"
 #include <dispatch/dispatch.h>
 
 typedef struct

@@ -1,5 +1,5 @@
-#include "cliente.h"
-#include "cine.h"
+#include "cliente_MacOS.h"
+#include "cine_MacOS.h"
 #include <pthread.h>
 #include <semaphore.h>
 #include <unistd.h>

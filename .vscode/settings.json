@@ -6,6 +6,10 @@
         "unistd.h": "c",
         "stdbool.h": "c",
         "dispatch.h": "c",
-        "semaphore.h": "c"
+        "semaphore.h": "c",
+        "cine_macos.h": "c",
+        "cliente.h": "c",
+        "cine.h": "c",
+        "cliente_macos.h": "c"
     }
 }
