@@ -3,10 +3,15 @@
 #include <pthread.h>
 #include <semaphore.h>
 #include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <dispatch/dispatch.h>
 
 int idGlobal = 0;
+sem_t semaforo;
 
-Cliente crearCliente(int numReservas, bool patronAsientos, sem_t *semaforo, Asiento **cine)
+// Creamos un cliente con un asiento reservado
+Cliente crearCliente(int numReservas, bool patronAsientos, dispatch_semaphore_t semaforo, Asiento **cine)
 {
     Cliente nuevoCliente;
     nuevoCliente.id = idGlobal++;
@@ -31,15 +36,15 @@ void *reservarAsiento(void *arg)
             int fila = rand() % FILAS;
             int columna = rand() % COLUMNAS;
 
-            sem_wait(cliente->semaforo); // Bloquear el semáforo
+            dispatch_semaphore_wait(cliente->semaforo, DISPATCH_TIME_FOREVER); // Bloquear el semáforo
             if (!cine[fila][columna].estaReservada && reservasRealizadas < cliente->numReservas)
             {
                 cine[fila][columna].estaReservada = true;
-                sleep(10); // Mantener el asiento reservado durante 10 segundos
+                sleep(1); // Mantener el asiento reservado durante 1 segundo
                 printf("El cliente %d ha reservado el asiento %d-%d\n", cliente->id, fila, columna);
                 reservasRealizadas++;
             }
-            sem_post(cliente->semaforo); // Desbloquear el semáforo
+            dispatch_semaphore_signal(cliente->semaforo); // Desbloquear el semáforo
         }
     }
     else
@@ -48,16 +53,16 @@ void *reservarAsiento(void *arg)
         {
             for (int j = 0; j < COLUMNAS && reservasRealizadas < cliente->numReservas; j++)
             {
-                sem_wait(cliente->semaforo); // Bloquear el semáforo
+                dispatch_semaphore_wait(cliente->semaforo, DISPATCH_TIME_FOREVER); // Bloquear el semáforo
                 if (!cine[i][j].estaReservada)
                 {
                     cine[i][j].estaReservada = true;
-                    sleep(10);                   // Mantener el asiento reservado durante 10 segundos
-                    sem_post(cliente->semaforo); // Desbloquear el semáforo
+                    sleep(1);                                     // Mantener el asiento reservado durante 1 segundo
+                    dispatch_semaphore_signal(cliente->semaforo); // Desbloquear el semáforo
                     reservasRealizadas++;
                     return NULL;
                 }
-                sem_post(cliente->semaforo); // Desbloquear el semáforo
+                dispatch_semaphore_signal(cliente->semaforo); // Desbloquear el semáforo
             }
         }
     }

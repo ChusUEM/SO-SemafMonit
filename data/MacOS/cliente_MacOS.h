@@ -1,6 +1,8 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
 #include <stdbool.h>
+#include <semaphore.h>
+#include "cine.h"
 #include <dispatch/dispatch.h>
 
 typedef struct
