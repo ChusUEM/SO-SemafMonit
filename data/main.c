@@ -13,7 +13,7 @@ int main()
     // Creamos una variable cine que es una matriz de asientos
     Asiento **cine = crearCine();
     pintarCine(cine);
-    int numClientes = 10;
+    int numClientes = 20;
     bool patronAsientos;
     sem_t semaforo;
     sem_init(&semaforo, 0, 1); // Inicializar el semáforo

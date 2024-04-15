@@ -11,7 +11,7 @@ int main()
 {
     Asiento **cine = crearCine();
     pintarCine(cine);
-    int numClientes = 10;
+    int numClientes = 30;
     bool patronAsientos;
     dispatch_semaphore_t semaforo = dispatch_semaphore_create(1); // Inicializar el semáforo
     Cliente clientes[numClientes];

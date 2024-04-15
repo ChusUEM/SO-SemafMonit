@@ -39,7 +39,7 @@ void *reservarAsiento(void *arg)
             if (!cine[fila][columna].estaReservada && reservasRealizadas < cliente->numReservas)
             {
                 cine[fila][columna].estaReservada = true;
-                sleep(1); // Mantener el asiento reservado durante 1 segundo
+                sleep(0.2); // Mantener el asiento reservado durante 1 segundo
                 printf("El cliente %d ha reservado el asiento %d-%d\n", cliente->id, fila, columna);
                 reservasRealizadas++;
             }
@@ -56,7 +56,7 @@ void *reservarAsiento(void *arg)
                 if (!cine[i][j].estaReservada)
                 {
                     cine[i][j].estaReservada = true;
-                    sleep(1);                    // Mantener el asiento reservado durante 1 segundo
+                    sleep(0.2);                  // Mantener el asiento reservado durante 1 segundo
                     sem_post(cliente->semaforo); // Desbloquear el semáforo
                     reservasRealizadas++;
                     return NULL;

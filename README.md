@@ -17,4 +17,10 @@ Para compilar el proyecto, se debe ejecutar el siguiente comando:
     gcc cine.c main.c cliente.c -o programa
     ./programa -o cine 
 ```
+## Compilación y ejecución en MacOS
+Para compilar el proyecto, se debe ejecutar el siguiente comando:
+```bash
+    gcc cine_MacOS.c main_MacOS.c cliente_MacOS.c -o programa_MacOS
+    ./programa_MacOS -o cine_MacOS
+```
 
