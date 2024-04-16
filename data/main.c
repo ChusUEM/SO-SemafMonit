@@ -8,7 +8,8 @@
 #include <stdbool.h>
 #include <sys/time.h>
 
-double obtenerTiempo() {
+double obtenerTiempo()
+{
     struct timeval tiempo;
     gettimeofday(&tiempo, NULL);
     return tiempo.tv_sec + tiempo.tv_usec / 1000000.0;
@@ -16,13 +17,13 @@ double obtenerTiempo() {
 
 int main()
 {
-  
+
     double inicio, fin;
 
     inicio = obtenerTiempo();
     // Creamos una matriz de asientos representando el cine
     Asiento **cine = crearCine();
-    int numClientes = 10;
+    int numClientes = 50;
     // Variable para almacenar el patrón de asientos de cada cliente
     bool patronAsientos;
     sem_t semaforo;
@@ -60,6 +61,9 @@ int main()
     fin = obtenerTiempo(); // Guarda el tiempo de finalización
 
     double tiempo_total = fin - inicio;
+    double clientes_media = (double)numClientes;
     printf("Tiempo total: %.6f segundos\n", tiempo_total);
+    double media_tiempo = clientes_media / tiempo_total;
+    printf("Media por cliente: %.6f segundos\n", media_tiempo);
     return 0;
 }
