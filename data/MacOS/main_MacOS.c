@@ -6,9 +6,20 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <dispatch/dispatch.h>
+#include <sys/time.h>
+
+double obtenerTiempo()
+{
+    struct timeval tiempo;
+    gettimeofday(&tiempo, NULL);
+    return tiempo.tv_sec + tiempo.tv_usec / 1000000.0;
+}
 
 int main()
 {
+    double inicio, fin;
+    inicio = obtenerTiempo();
+
     Asiento **cine = crearCine();
     pintarCine(cine);
     int numClientes = 10;
@@ -34,5 +45,14 @@ int main()
     dispatch_semaphore_signal(semaforo); // Incrementar el semáforo
 
     pintarCine(cine);
+    fin = obtenerTiempo(); // Guarda el tiempo de finalización
+
+
+    // Imprimimos y sacamos las métricas de los resultados obtenidos
+    double tiempo_total = fin - inicio;
+    double clientes_media = (double)numClientes;
+    printf("Tiempo total: %.6f segundos\n", tiempo_total);
+    double media_tiempo = clientes_media / tiempo_total;
+    printf("Media por cliente: %.6f segundos\n", media_tiempo);
     return 0;
 }
