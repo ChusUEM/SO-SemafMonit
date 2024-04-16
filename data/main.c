@@ -60,6 +60,7 @@ int main()
     pintarCine(cine);
     fin = obtenerTiempo(); // Guarda el tiempo de finalización
 
+    // Imprimimos y sacamos las métricas de los resultados obtenidos
     double tiempo_total = fin - inicio;
     double clientes_media = (double)numClientes;
     printf("Tiempo total: %.6f segundos\n", tiempo_total);
