@@ -6,9 +6,20 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <sys/time.h>
+
+double obtenerTiempo() {
+    struct timeval tiempo;
+    gettimeofday(&tiempo, NULL);
+    return tiempo.tv_sec + tiempo.tv_usec / 1000000.0;
+}
 
 int main()
 {
+  
+    double inicio, fin;
+
+    inicio = obtenerTiempo();
     // Creamos una matriz de asientos representando el cine
     Asiento **cine = crearCine();
     int numClientes = 10;
@@ -46,5 +57,9 @@ int main()
 
     // Imprimimos el estado final del cine después de que todos los clientes hayan reservado sus asientos
     pintarCine(cine);
+    fin = obtenerTiempo(); // Guarda el tiempo de finalización
+
+    double tiempo_total = fin - inicio;
+    printf("Tiempo total: %.6f segundos\n", tiempo_total);
     return 0;
 }
