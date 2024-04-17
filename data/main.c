@@ -23,6 +23,7 @@ int main()
     inicio = obtenerTiempo();
     // Creamos una matriz de asientos representando el cine
     Asiento **cine = crearCine();
+    // Variable del numero de clientes (pruebas)
     int numClientes = 50;
     // Variable para almacenar el patrón de asientos de cada cliente
     bool patronAsientos;
